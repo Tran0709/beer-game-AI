@@ -1,0 +1,7 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "beergame-ai-experiment",
+  "compatibility_date": "2026-10-06",
+  "observability": { "enabled": true },
+  "assets": { "directory": "." }
+}

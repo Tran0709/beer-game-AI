@@ -29,7 +29,7 @@ The agent can never edit: `.env` files, `tests/` (so it can't "pass" by weakenin
 2. `ai-maintenance/.env` (from `.env.example`): leave `OPENAI_API_KEY` blank to reuse the key already in `ai-proxy-server/.env`. Add the Telegram bot token (from @BotFather) and your chat ID. Never commit, paste or screenshot it.
 3. Telegram: `python ai-maintenance/agent/telegram_bot.py` on any machine that stays on.
 4. Weekly schedule: `.github/workflows/weekly-maintenance.yml` (add repo secrets `OPENAI_API_KEY`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_ALLOWED_CHAT_IDS`; set `git.push` to `true` in `config/config.json`). Or cron: `0 2 * * 1 python ai-maintenance/agent/maintain.py weekly`.
-5. Live deploy: you upload to Cloudflare by hand today, so `/approve` promotes the code on `main` and you upload it. Put your `wrangler deploy` command in `environments.live.deploy_cmd` to automate that, then add `node scripts/smoke_url.js <url>` as its `smoke_cmd`.
+5. Live deploy: Cloudflare builds this repo from GitHub, so pushing `main` IS the deploy. Set `git.push` to `true` and `/approve` becomes the release button (dev and test pushes can serve as preview builds if Cloudflare preview builds are on). `.assetsignore` keeps everything except the game page off the public website.
 
 ## Prove it works (no keys, no network)
 `python ai-maintenance/tests/test_framework.py` copies the real game, plants a bug in the engine, and shows the agent healing it through dev → test → approval → live, refusing to touch tests/secrets, and leaving a healthy game alone.

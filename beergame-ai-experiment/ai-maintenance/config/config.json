@@ -21,9 +21,9 @@
     },
     "live": {
       "url": "https://snowy-voice-53c8.tranphucdang0709.workers.dev/",
-      "deploy_cmd": "echo MANUAL STEP - upload the folder to Cloudflare Workers, or put your wrangler deploy command here",
+      "deploy_cmd": "echo Cloudflare deploys main automatically when it is pushed to GitHub",
       "smoke_cmd": "",
-      "note": "Until a wrangler deploy command is set, go-live only promotes the code on main; you upload it. Then run: node scripts/smoke_url.js <live url>"
+      "note": "Cloudflare Workers Builds deploys on every push to main. Set git.push to true and /approve becomes the live release button. Then run: node scripts/smoke_url.js <live url>"
     }
   },
   "commands": {
